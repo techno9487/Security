@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/project.dir/main.cpp.o CMakeFiles/project.dir/electronics.cpp.o  -o project -rdynamic -lwiringPi -lopencv_highgui -lopencv_core -lopencv_video -lopencv_imgproc 
