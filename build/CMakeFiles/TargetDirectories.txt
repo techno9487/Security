@@ -1,3 +1,0 @@
-/home/pi/uni/build/CMakeFiles/rebuild_cache.dir
-/home/pi/uni/build/CMakeFiles/edit_cache.dir
-/home/pi/uni/build/CMakeFiles/project.dir
