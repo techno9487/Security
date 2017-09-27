@@ -1,5 +1,7 @@
 #include "Transport.hpp"
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
 
 struct DataTransfer
 {

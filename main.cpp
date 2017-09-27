@@ -6,6 +6,7 @@
 #include <opencv2/video.hpp>
 #include "electronics.hpp"
 #include <vector>
+#include "NotificationCentre.hpp"
 
 using namespace std;
 using namespace cv;
@@ -17,7 +18,7 @@ void Shutdown()
 	SetOk(false);
 }
 
-void OnMovement(bool isNow);
+void Movement(bool isNow);
 
 NotificationCentre centre;
 
@@ -85,7 +86,7 @@ int main()
 			Movement(false);
 		}
 		
-		imshow("footage",frame);
+		imshow("footage",gray);
 		if(waitKey(30) >= 0)
 			break;
 	}
@@ -103,7 +104,7 @@ void Movement(bool isNow)
 	{
 		struct Notification note;
 		note.info = "MOVEMENT!";
-		note.type = NotificationType.TEXT;
+		note.type = TEXT;
 
 		centre.SubmitJob(note);
 		//TODO: Generate uuid save image with uuid as name then submit
