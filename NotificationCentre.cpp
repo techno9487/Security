@@ -1,5 +1,6 @@
 #include "NotificationCentre.hpp"
 #include "Notification.hpp"
+#include <iostream>
 
 void NotificationCentre::Run()
 {
@@ -8,6 +9,7 @@ void NotificationCentre::Run()
 
 void NotificationCentre::NotificationThread()
 {
+    std::cout << "Starting worker thread" << std ::endl;
     while(this->isActive)
     {
         if(this->lock.try_lock())
