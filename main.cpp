@@ -17,10 +17,17 @@ void Shutdown()
 	SetOk(false);
 }
 
+void OnMovement(bool isNow);
+
+NotificationCentre centre;
+
 int main()
 {
 	wiringPiSetup();
 	pinMode(GREEN_LED_PIN,OUTPUT);
+	pinMode(BUZZER_PIN,OUTPUT);
+	pinMode(LDR_PIN,INPUT);
+	pinMode(RED_LED_PIN,OUTPUT);
 	SetOk(true);
 	
 	std::cout << "Starting security system!" << std::endl;
@@ -70,13 +77,13 @@ int main()
 				didMove = true;
 				count += 1;
 				cout << count << endl;
+				Movement(true);
 			}
 		}else{
 			//we didnt move so reset
 			didMove = false;
+			Movement(false);
 		}
-		
-		
 		
 		imshow("footage",frame);
 		if(waitKey(30) >= 0)
@@ -85,4 +92,21 @@ int main()
 	
 	Shutdown();
 	return 0;
+}
+
+void Movement(bool isNow)
+{
+	SetBuzzer(isNow);
+	SetAlarm(isNow);
+
+	if(isNow)
+	{
+		struct Notification note;
+		note.info = "MOVEMENT!";
+		note.type = NotificationType.TEXT;
+
+		centre.SubmitJob(note);
+		//TODO: Generate uuid save image with uuid as name then submit
+		//to messenger process to forward it onto facebook
+	}
 }
