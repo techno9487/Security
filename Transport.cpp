@@ -2,6 +2,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <json.hpp>
+
+using json = nlohmann::json;
 
 struct DataTransfer
 {
@@ -44,9 +47,14 @@ void Transport::SendTextRequest(std::string text)
     curl_easy_setopt(handle,CURLOPT_URL,"http://localhost:5000/api/text");
     curl_easy_setopt(handle,CURLOPT_POST,1L);
 
+    json j;
+    j["text"] = text;
+
+    std::string data = j.dump();
+
     struct DataTransfer transfer;
-    transfer.data = (char*)text.c_str();
-    transfer.left = text.length();
+    transfer.data = (char*)data.c_str();
+    transfer.left = data.length();
 
     curl_easy_setopt(handle,CURLOPT_READFUNCTION,JSONReadFunction);
     curl_easy_setopt(handle,CURLOPT_READDATA,&transfer);
