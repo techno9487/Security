@@ -43,6 +43,7 @@ int main()
 	}
 		
 	namedWindow("footage",1);
+	namedWindow("live",2);
 	
 	Mat frame,mask,gray;
 	BackgroundSubtractorMOG2 bs;
@@ -88,6 +89,7 @@ int main()
 		}
 		
 		imshow("footage",gray);
+		imshow("live",frane);
 		if(waitKey(30) >= 0)
 			break;
 	}
