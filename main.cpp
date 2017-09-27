@@ -89,7 +89,7 @@ int main()
 		}
 		
 		imshow("footage",gray);
-		imshow("live",frane);
+		imshow("live",frame);
 		if(waitKey(30) >= 0)
 			break;
 	}
