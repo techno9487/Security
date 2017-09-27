@@ -81,6 +81,7 @@ int main()
 				count += 1;
 				cout << count << endl;
 				Movement(true);
+				imwrite("/tmp/photo.jpg",frane);
 			}
 		}else{
 			//we didnt move so reset
@@ -106,8 +107,8 @@ void Movement(bool isNow)
 	if(isNow)
 	{
 		struct Notification note;
-		note.info = "MOVEMENT!";
-		note.type = TEXT;
+		note.info = "/tmp/photo.jpg";
+		note.type = IMAGE;
 
 		centre.SubmitJob(note);
 		//TODO: Generate uuid save image with uuid as name then submit

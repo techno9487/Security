@@ -9,4 +9,5 @@ private:
 public:
     Transport();
     void SendTextRequest(std::string text);
+    void SendImageRequest(std::string path);
 };

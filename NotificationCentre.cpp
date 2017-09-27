@@ -24,6 +24,9 @@ void NotificationCentre::NotificationThread()
                     case TEXT:
                     trans.SendTextRequest(note.info);
                     break;
+                    case IMAGE:
+                    trans.SendImageRequest(note.info);
+                    break;
                 }
             }
             lock.unlock();
