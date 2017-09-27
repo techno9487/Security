@@ -30,6 +30,7 @@ int main()
 	pinMode(LDR_PIN,INPUT);
 	pinMode(RED_LED_PIN,OUTPUT);
 	SetOk(true);
+	centre.Run();
 	
 	std::cout << "Starting security system!" << std::endl;
 	
